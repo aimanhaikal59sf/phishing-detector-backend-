@@ -1,14 +1,25 @@
-# Phishing Detector Backend
+# Phishing URL Detection API
 
-Repo contains a FastAPI backend that exposes an endpoint `/predict`.
+A FastAPI service that predicts whether a URL is **phishing** or **legitimate** using machine learning.
 
-## Run locally
-```bash
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+## 🚀 Endpoints
 
-## Generate model locally
-```bash
-python training/train_model.py
-```
+| Method | Route     | Description |
+|--------|----------|-------------|
+| GET    | `/`       | Health check |
+| POST   | `/predict` | Predict phishing |
+
+## ✅ Request Example
+
+```json
+{
+  "url_length": 25,
+  "num_subdomains": 1,
+  "has_https": 1,
+  "has_ip": 0,
+  "special_chars": 2,
+  "suspicious_keywords": 1,
+  "shortened": 0,
+  "uncommon_tld": 0,
+  "raw_url": "https://paypal.verify-account-login.com"
+}
